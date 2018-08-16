@@ -1,0 +1,1339 @@
+% \documentclass[handout]{beamer}
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+% \usepackage{caption}
+% \usepackage{textcomp}
+% \usepackage{arioref}
+% \usepackage{afterpage}
+% \usepackage{subcaption}
+% \usepackage{float}
+% \usepackage{bm}
+% \usepackage{amssymb}
+% \usepackage{pdfpages}
+% \usepackage{pdflscape}
+% \usepackage{lscape}
+
+% % Change font
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\setmainfont{Raleway}
+% % \setmonofont{Ubuntu Mono}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Beamer customization  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\gooditem}[1]{\setbeamercolor{item}{fg=green}\item #1}
+\newcommand{\baditem}[1]{\setbeamercolor{item}{fg=red}\item #1}
+
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+
+\usefonttheme[onlysmall]{structurebold}
+% Use a bold face title font
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
+
+% Use raleway
+% \usepackage{raleway}
+% \renewcommand{\familydefault}{\sfdefault}
+
+
+\setbeamercolor{frametitle}{fg=black!75!white,bg=white}
+\setbeamercolor{normal text}{fg=black!75!white,bg=white}
+\setbeamercolor{structure}{fg=black,bg=white}
+
+
+% Suppress navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{myred}{RGB}{190,0,0}
+
+\definecolor{codegray}{RGB}{134, 134, 134}
+
+
+\graphicspath{{./figures/}}
+
+
+%%%%%%%%%%%%%%
+%   Colors   %
+%%%%%%%%%%%%%%
+
+
+\definecolor{logogrey}{HTML}{426E86}
+\definecolor{logored}{HTML}{E50000}
+\definecolor{logoyellow}{HTML}{F9BA32}
+
+
+%%%%%%%%%%%%%%%%
+%   Commands   %
+%%%%%%%%%%%%%%%%
+
+\newcommand{\fullimage}[2]{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor = center] (image) at (current page.center) {\includegraphics[scale=#2]{#1}};
+  \end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   lstlistings customization  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\definecolor{listingsstringcolor}{rgb}{0.7294117647058823, 0.12941176470588237, 0.12941176470588237}
+\definecolor{listingskeywordcolor}{rgb}{0.0,0.5,0.0}
+\definecolor{listingsbasiccolor}{rgb}{0.0,0.0,0.0}
+\definecolor{listingsnumbercolor}{rgb}{0.53, 0.53, 0.53}
+\definecolor{listingscommentcolor}{rgb}{0.25,0.5,0.5}
+\definecolor{listingsbackgroundcolor}{rgb}{0.9686274509803922, 0.9686274509803922, 0.9686274509803922}
+\definecolor{listingsrulecolor}{rgb}{0.8117647058823529, 0.8117647058823529, 0.8117647058823529}
+\definecolor{listingsidentifiercolor}{rgb}{0.0,0.0,0.0}
+\definecolor{listingsclasscolor}{rgb}{0.0,0.5,0.0}
+\definecolor{listingsmembercolor}{rgb}{0.5,0.0,0.0}
+\definecolor{listingsdirectivecolor}{rgb}{0.0,0.0,0.5}
+\definecolor{pyoutbackground}{rgb}{1.0, 1.0, 1.0}
+\definecolor{pyoutrule}{rgb}{.25882353,  0.64705882,  0.96078431}
+\definecolor{pseudobackground}{RGB}{227,  248,  255}
+
+
+\lstset {
+    language=Python,
+    otherkeywords={self},
+    keywordstyle=\ttfamily\color{blue!90!black},
+    keywords=[2]{True,False},
+    keywords=[3]{ttk},
+    keywordstyle={[2]\ttfamily\color{yellow!80!orange}},
+    keywordstyle={[3]\ttfamily\color{red!80!orange}},
+    emph={MyClass,__init__},
+    emphstyle=\ttfamily\color{red!80!black},
+    stringstyle=\color{green!80!black},
+    showstringspaces=false
+    backgroundcolor=\color{listingsbackgroundcolor},
+    frame=none,                    % adds a frame around the code
+    framexleftmargin=5pt,
+    framexrightmargin=5pt,
+    framextopmargin=0pt,
+    framexbottommargin=0pt,
+    xleftmargin=9pt,
+    xrightmargin=9pt,
+    rulecolor=\color{listingsrulecolor},
+    tabsize=4,                       % sets default tabsize to 2 spaces
+    showstringspaces=false,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+    keywords=[2]{True,False},
+    basicstyle=\color{listingsbasiccolor}\ttfamily,
+    keywordstyle=\color{listingskeywordcolor}\ttfamily\bfseries,
+%    directivestyle=\color{listingsdirectivecolor}\ttfamily,
+    stringstyle=\color{listingsstringcolor}\ttfamily,
+    commentstyle=\color{listingscommentcolor}\ttfamily,
+    numberstyle=\color{listingsnumbercolor}\ttfamily,
+    identifierstyle=\color{listingsidentifiercolor}\ttfamily,
+    keywordstyle=[2]{\color{listingsclasscolor}\ttfamily},
+    keywordstyle=[3]{\color{listingsmembercolor}\ttfamily},
+    keywordstyle=[4]{\color{listingsdirectivecolor}\ttfamily}
+}
+
+
+
+
+\lstdefinestyle{gray} {
+    language=Python,
+    otherkeywords={self},
+    keywordstyle=\ttfamily\color{blue!90!black},
+    keywords=[2]{True,False},
+    keywords=[3]{ttk},
+    keywordstyle={[2]\ttfamily\color{yellow!80!orange}},
+    keywordstyle={[3]\ttfamily\color{red!80!orange}},
+    emph={MyClass,__init__},
+    emphstyle=\ttfamily\color{red!80!black},
+    stringstyle=\color{green!80!black},
+    showstringspaces=false
+    backgroundcolor=\color{listingsbackgroundcolor},
+    frame=none,                    % adds a frame around the code
+    framexleftmargin=5pt,
+    framexrightmargin=5pt,
+    framextopmargin=0pt,
+    framexbottommargin=0pt,
+    xleftmargin=9pt,
+    xrightmargin=9pt,
+    rulecolor=\color{listingsrulecolor},
+    tabsize=4,                       % sets default tabsize to 2 spaces
+    showstringspaces=false,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+    keywords=[2]{True,False},
+    basicstyle=\color{codegray}\ttfamily,
+    keywordstyle=\color{codegray}\ttfamily\bfseries,
+%    directivestyle=\color{listingsdirectivecolor}\ttfamily,
+    stringstyle=\color{codegray}\ttfamily,
+    commentstyle=\color{codegray}\ttfamily,
+    numberstyle=\color{codegray}\ttfamily,
+    identifierstyle=\color{codegray}\ttfamily,
+    keywordstyle=[2]{\color{codegray}\ttfamily},
+    keywordstyle=[3]{\color{codegray}\ttfamily},
+    keywordstyle=[4]{\color{codegray}\ttfamily}
+}
+
+
+
+\lstdefinestyle{white} {
+    language=Python,
+    otherkeywords={self},
+    keywordstyle=\ttfamily\color{blue!90!black},
+    keywords=[2]{True,False},
+    keywords=[3]{ttk},
+    keywordstyle={[2]\ttfamily\color{yellow!80!orange}},
+    keywordstyle={[3]\ttfamily\color{red!80!orange}},
+    emph={MyClass,__init__},
+    emphstyle=\ttfamily\color{red!80!black},
+    stringstyle=\color{green!80!black},
+    showstringspaces=false
+    backgroundcolor=\color{listingsbackgroundcolor},
+    frame=none,                    % adds a frame around the code
+    framexleftmargin=5pt,
+    framexrightmargin=5pt,
+    framextopmargin=0pt,
+    framexbottommargin=0pt,
+    xleftmargin=9pt,
+    xrightmargin=9pt,
+    rulecolor=\color{listingsrulecolor},
+    tabsize=4,                       % sets default tabsize to 2 spaces
+    showstringspaces=false,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+    keywords=[2]{True,False},
+    basicstyle=\color{white}\ttfamily,
+    keywordstyle=\color{white}\ttfamily\bfseries,
+%    directivestyle=\color{listingsdirectivecolor}\ttfamily,
+    stringstyle=\color{white}\ttfamily,
+    commentstyle=\color{white}\ttfamily,
+    numberstyle=\color{white}\ttfamily,
+    identifierstyle=\color{white}\ttfamily,
+    keywordstyle=[2]{\color{white}\ttfamily},
+    keywordstyle=[3]{\color{white}\ttfamily},
+    keywordstyle=[4]{\color{white}\ttfamily}
+}
+
+
+
+\begin{document}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}
+
+  \vspace{25mm}
+% \begin{center}
+    \textbf{\color{myred}\large A Python toolbox for uncertainty quantification and sensitivity analysis of computational neuroscience models.}
+% \end{center}
+
+     \normalsize \vspace{5mm}
+
+     Simen Tennøe$^{1}$, Geir Halnes$^{2}$, Gaute Einevoll$^{1,2}$
+     \vspace{5mm}
+
+     \footnotesize
+     $^1$University of Oslo,
+     $^2$Norwegian University of Life Sciences
+ %
+ \begin{tikzpicture}[remember picture,overlay]
+    \node [xshift=0\paperwidth,yshift=0.25\paperheight] at (current page.center)
+          {\includegraphics[width = 1\textwidth ]{uncertainpy.png}};
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [xshift=1.35cm,yshift=0.55cm] at (current page.south west)
+          {\includegraphics[width = 0.2\paperwidth ]{cinpla.png}};
+  \end{tikzpicture}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{Overview of this talk}
+
+% \end{frame}
+
+
+
+
+% \begin{frame}[fragile]{Overview of this talk}
+
+%     \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+%       \node [align=left, xshift=-0.3\textwidth, yshift=0.2\textheight] (image3) at (current page.center)
+%             {\includegraphics[width = 0.3\textwidth]{deterministic.png}};
+%       \node[align=left, xshift=3cm] at (image3.east) {\bf Why we need uncertainty \\ \bf quantification};
+%     \end{tikzpicture}
+
+%   \pause
+
+%   \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+%   \node [align=left, xshift=-0.2\textwidth,yshift=-0.05\textheight] (image1) at (current page.center)
+%       {\includegraphics[width = 0.3\textwidth]{uncertainpy.png}};
+%   \node[align=left, xshift=2.5cm] at (image1.east) {\bf What Uncertainpy offers};
+%   \end{tikzpicture}
+
+% \pause
+
+
+%     \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+%       \node [align=left, xshift=-0.1\textwidth,yshift=-0.3\textheight] (image2) at (current page.center)
+%             {\includegraphics[width = 0.2\textwidth]{code.png}};
+%       \node[align=left, xshift=3cm] at (image2.east) {\bf How to use Uncertainpy};
+%     \end{tikzpicture}
+
+% \end{frame}
+
+
+\begin{frame}[fragile]{Overview of this talk}
+
+      \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+        \node [align=left, xshift=-0.3\textwidth, yshift=0.2\textheight] (image3) at (current page.center)
+              {\includegraphics[width = 0.25\textwidth]{hh_excerpt.png}};
+        \node[align=left, xshift=3cm] at (image3.east) {\bf Why we need uncertainty \\ \bf quantification};
+      \end{tikzpicture}
+
+    \pause
+
+    \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+      \node [align=left, xshift=-0.2\textwidth,yshift=-0.05\textheight] (image1) at (current page.center)
+            {\includegraphics[width = 0.3\textwidth]{probabalistic_excerpt.png}};
+      \node[align=left, xshift=2.5cm] at (image1.east)
+          {\textbf{Uncertainty quantification} \\ \textbf{and sensitivity analysis}};
+    \end{tikzpicture}
+
+  \pause
+
+
+      \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+        \node [align=left, xshift=-0.1\textwidth,yshift=-0.3\textheight] (image2) at (current page.center)
+              {\includegraphics[width = 0.2\textwidth]{features_excerpt.png}};
+        \node[align=left, xshift=3cm] at (image2.east)
+        {\textbf{How Uncertainpy is tailored} \\ \textbf{towards neuroscience}};
+      \end{tikzpicture}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+%   Define the problem        %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Computational models contain parameters}
+%   % \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}  + {\bf\color{logogrey}I_{K}} + {\bf\color{logoyellow}I_{Na}} + {\bf\color{logored}I_{l}}\]
+
+%   % \vspace{-5mm}
+%   \begin{figure}
+%     \includegraphics[width=\textwidth]{deterministic.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Membrane potential of the Hodgkin-Huxley model with a step current}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{hh_single.png}
+  \end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}{The equation describing the Hodgkin-Huxley model}
+  % \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}  + I_{K} + I_{Na} +I_{l}\]
+%  \only<1>{ \LARGE  \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}  + {\bf\color{logogrey}I_{K}} + {\bf\color{logoyellow}I_{Na}} + {\bf\color{logored}I_{l}}\]}
+
+\vspace{-7mm}
+
+%   \begin{figure}
+%     \onslide<2>{\includegraphics[width=\textwidth]{hh_eq.png}}
+%   \end{figure}
+% \vspace{-19mm}
+
+  \onslide<1->{ \LARGE  \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}
+               + {\bf\color{logogrey}\overline{g}_{K}}(\ldots)
+               + {\bf\color{logoyellow}\overline{g}_{Na}}(\ldots)
+               + {\bf\color{logored}\overline{g}_{l}}(\ldots) \]}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{The Hodgkin-Huxley model has three types of \\ion channels}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[height=0.82\textheight]{deterministic_channels.png}
+  \end{figure}
+\end{frame}
+
+
+
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Changing the parameters give different results}
+% % \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}  + {\bf\color{logogrey}I_{K}} + {\bf\color{logoyellow}I_{Na}} + {\bf\color{logored}I_{l}}\]
+% \[I = C_m\frac{{\mathrm d} V_m}{{\mathrm d} t}
+%                + {\bf\color{logogrey}\overline{g}_{K}}(\ldots)
+%                + {\bf\color{logoyellow}\overline{g}_{Na}}(\ldots)
+%                + {\bf\color{logored}\overline{g}_{l}}(\ldots) \]
+
+%   \vspace{-5mm}
+%   \begin{figure}
+%     \includegraphics[height=0.7\textheight]{hh.png}
+%   \end{figure}
+
+% \end{frame}
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Problem: The parameters are uncertain}
+%   \begin{figure}
+%     \only<1>{\includegraphics[width=1\textwidth]{not_deterministic.png}}
+%     \only<2>{\includegraphics[width=1\textwidth]{not_deterministic_distributions.png}}
+%   \end{figure}
+
+% \end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{The parameters do not have exact fixed values}
+%   \begin{figure}
+%     \includegraphics[width=1\textwidth]{not_deterministic_channels.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}
+\vspace{9mm}
+  \begin{center}
+    \Large \textbf{The parameters do not have exact fixed values}
+  \end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}[plain]{\color{black}Measurement uncertainty}
+
+% \begin{tikzpicture}[remember picture, overlay]
+%   \node[anchor = center] (image) at (current page.center) {\includegraphics[scale=0.38]{eeg.jpg}};
+%   \node[align = left, xshift=0.4cm, yshift=-0.4cm] at (current page.135) {\bf Measurement uncertainty};
+% \end{tikzpicture}
+
+% \end{frame}
+
+\begin{frame}{Measurement uncertainty in neuroscience}
+
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{patch_clamp.png}
+  \end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Biological variability: parameters change \\ over time }
+  \begin{figure}
+    \includegraphics[height=0.7\textheight]{time.png}
+
+  \end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Biological variability: parameters vary within \\ a neuron}
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{channels_diverse.png}
+
+  \end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Biological variability: parameters vary between several neurons of the same type}
+  \begin{figure}
+    \includegraphics[height=0.7\textheight]{network.png}
+  \end{figure}
+
+\end{frame}
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Biological variability}
+
+% \begin{minipage}[t]{0.4\textwidth}
+%   The parameters:
+%   \begin{itemize}[<+->]
+%     \item change over time
+%     \item vary within a neuron
+%     \item vary between several neurons of the same type
+%   \end{itemize}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+%   \begin{figure}
+%     \only<1>{\includegraphics[width=1\textwidth]{time.png}}
+%     \only<2>{\includegraphics[width=1\textwidth]{channels_diverse.png}}
+%     \only<3>{\includegraphics[width=1\textwidth]{network.png}}
+%   \end{figure}
+% \end{minipage}
+
+
+
+% \end{frame}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Parameters are best described by distributions}
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{distribution_channels.png}
+  \end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}
+%   \textbf{\Large{\color{myred}
+%   Uncertainty quantification} enables us to take the effects of
+%   uncertain parameters into account}
+
+% \end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+%   What is UQ                %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{Uncertainty quantification is the process of quantifying the effects of
+%   uncertain parameters}
+% \begin{figure}
+% \includegraphics[width=1\textwidth]{probabalistic.png}
+% \end{figure}
+
+% \end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{{\color<1>{myred}{Uncertainty quantification}} enables us to take the effects of
+  uncertain parameters into account}
+  \vspace{-10mm}
+  \pause
+  \begin{figure}
+    % \only<2>{\includegraphics[width=1.05\textwidth]{uq_1.png}}
+    \only<2>{\includegraphics[width=1.05\textwidth]{uq_2.png}}
+    \only<3>{\includegraphics[width=1.05\textwidth]{uq_3.png}}
+  \end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+%   How to perform UQ         %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+\begin{frame}[fragile]
+\vspace{-2cm}
+\begin{figure}
+\includegraphics[width=1\textwidth]{uncertainpy.png}
+\end{figure}
+
+
+
+{\LARGE \bf A Python toolbox for uncertainty quantification}
+
+\vspace{1.5cm}
+
+Uses both:
+\begin{itemize}
+  \item Highly efficient \textbf{polynomial chaos expansions}
+  \item Traditional \textbf{quasi-Monte Carlo methods}
+\end{itemize}
+
+% Uses the highly efficient \textbf{polynomial chaos expansions}
+% as well as the more traditional \textbf{quasi-Monte Carlo methods}.
+
+% Found at:
+
+% \begin{lstlisting}
+% https://github.com/simetenn/uncertainpy
+% \end{lstlisting}
+
+
+% Installation:
+
+% \begin{lstlisting}
+% pip install uncertainpy
+% \end{lstlisting}
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{Uncertainpy performs all uncertainty calculations and requires the model and parameters}
+%   \begin{figure}
+%     \only<1>{\includegraphics[width=1\textwidth]{probabalistic_un.png}}
+%     \only<2>{\includegraphics[width=1\textwidth]{probabalistic_model.png}}
+%     \only<3>{\includegraphics[width=1\textwidth]{probabalistic_parameters.png}}
+%   \end{figure}
+% \end{frame}
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{Uncertainpy performs all uncertainty calculations}
+%   \begin{figure}
+%     \includegraphics[width=1\textwidth]{probabalistic_un.png}
+%   \end{figure}
+% \end{frame}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Mean and standard deviation of the Hodgkin-Huxley model with a step current}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{hh_mean.png}
+  \end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{90\% prediction interval of the \\ Hodgkin-Huxley model with a step current}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{hh_prediction.png}
+  \end{figure}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+%   What is SA                %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+
+% \begin{frame}{Sensitivity analysis quantifies how much of the uncertainty each
+%   parameter is responsible for}
+% \vspace{-5mm}
+% \begin{figure}
+%  \includegraphics[width=1\textwidth]{sensitivity_explanation_1.png}
+% \end{figure}
+
+% \end{frame}
+
+
+\begin{frame}{Sensitivity analysis quantifies how much of the uncertainty each
+  parameter is responsible for}
+% \vspace{5mm}
+\begin{figure}
+ \only<1>{\includegraphics[width=1.05\textwidth]{sensitivity_explanation_1.png}}
+ \only<2>{\includegraphics[width=1.05\textwidth]{sensitivity_explanation_2.png}}
+\end{figure}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Sensitivity of the conductances in the Hodgkin-Huxley model}
+% \begin{figure}
+%  \includegraphics[width=1\textwidth]{sensitivity_all.png}
+% \end{figure}
+
+\vspace{-5mm}
+\begin{figure}
+  \only<1>{\includegraphics[width=1\textwidth]{sensitivity.png}}
+  \only<2>{\includegraphics[width=1\textwidth]{sensitivity_mean_1.png}}
+  \only<3>{\includegraphics[width=1\textwidth]{sensitivity_mean_2.png}}
+  \only<4>{\includegraphics[width=1\textwidth]{sensitivity_mean_3.png}}
+\end{figure}
+
+\end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+%   Features                  %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \begin{frame}{}
+%   \begin{figure}
+%     \includegraphics[height=0.9\textheight]{features_illustration.png}
+%   \end{figure}
+% \end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+% \begin{frame}{Small shifts in spike timing are problematic}
+%   \vspace{-2mm}
+%   \begin{figure}
+%     \only<1>{\includegraphics[height=0.75\textheight]{lgn.png}}
+%     \only<2>{\includegraphics[height=0.75\textheight]{lgn_mean.png}}
+%   \end{figure}
+
+% \end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Pointwise comparison of model results give large differences
+  due to small time shifts in spikes}
+  \vspace{-2mm}
+  \begin{figure}
+   \only<1>{\includegraphics[height=0.8\textheight]{features_why.png}}
+   \only<2>{\includegraphics[height=0.8\textheight]{features_why_1.png}}
+   \only<3>{\includegraphics[height=0.8\textheight]{features_why_2.png}}
+  \end{figure}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+\begin{frame}{The time shifted spikes cause large variance}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[height=0.8\textheight]{features_why_prediction.png}
+  \end{figure}
+\end{frame}
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+\begin{frame}{The solution is to compare features of the model,
+  such as the number of spikes}
+  \vspace{-5mm}
+  \begin{figure}
+    \includegraphics[height=0.8\textheight]{features_why_3.png}
+  \end{figure}
+  \end{frame}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainpy calculates the uncertainty for a user selected set of
+              features of the model}
+  \vspace{-5mm}
+  \begin{figure}
+      \includegraphics[width=0.8\textwidth]{features.png}
+  \end{figure}
+  \end{frame}
+
+
+
+% % %%%%%%%%%%%%%
+% % %   Frame   %
+% % %%%%%%%%%%%%%
+
+% \begin{frame}{A Brunel network in the asyncronus irregular state}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{brunel.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+% % %%%%%%%%%%%%%
+% % %   Frame   %
+% % %%%%%%%%%%%%%
+
+% \begin{frame}{Average interspike interval of the network}
+%   \vspace{-2mm}
+
+%   \begin{figure}
+%       \includegraphics[width=0.95\textwidth]{average_isi.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+
+% % %%%%%%%%%%%%%
+% % %   Frame   %
+% % %%%%%%%%%%%%%
+
+% \begin{frame}{Sensitivity of the average interspike interval of \\ the network}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{average_isi_sensitivity.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{The number of spikes of the Hodgkin-Huxley model}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{nr_spikes.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Sensitivity of the number of spikes of the Hodgkin-Huxley model}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{nr_spikes_sensitivity.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+
+
+
+\begin{frame}[fragile]{Uncertainpy has built-in support for multi-compartmental models
+  \onslide<2>{and network models}}
+  \vspace{-2mm}
+
+  \begin{figure}
+    \includegraphics[height=0.3\textheight]{neuron.jpeg}
+  \end{figure}
+  \pause
+  \begin{figure}
+    \includegraphics[height=0.25\textheight]{nest.png}
+  \end{figure}
+
+\end{frame}
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+
+
+% \begin{frame}{Uncertainpy requires the model and parameters}
+%   \begin{figure}
+%     \only<1>{\includegraphics[width=1\textwidth]{probabalistic_model.png}}
+%     \only<2>{\includegraphics[width=1\textwidth]{probabalistic_parameters.png}}
+%   \end{figure}
+% \end{frame}
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+% \begin{frame}[fragile]{Code for the Hodgkin-Huxley example}
+%   \vspace{-3mm}
+
+% (*@\texttt{\textcolor{listingsstringcolor}{features=un.SpikingFeatures()}}@*)
+%   \begin{uncoverenv}<1,4>
+%     \begin{lstlisting}
+% def hodgin_huxley(gbar_Na, gbar_K, gbar_l):
+%     # Calculate the membrane potential using
+%     # gbar_Na, gbar_K and gbar_l
+%     ...
+%     return time, membrane_potential
+%       \end{lstlisting}
+
+%   \end{uncoverenv}
+
+%   \begin{uncoverenv}<2, 4>
+%     \begin{lstlisting}
+% parameters = {                         # Original
+%     "gbar_Na": cp.Uniform(60, 180),    # 120
+%     "gbar_K": cp.Uniform(18, 54),      # 36
+%     "gbar_l": cp.Uniform(0.15, 0.45)}  # 0.3
+%     \end{lstlisting}
+%   \end{uncoverenv}
+
+%   \begin{uncoverenv}<3, 4>
+%     \begin{lstlisting}
+% UQ = un.UncertaintyQuantification(
+%     model=hodgkin_huxley,
+%     parameters=parameters)
+
+% results = UQ.quantify()
+%     \end{lstlisting}
+%   \end{uncoverenv}
+
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]{Code for the Hodgkin-Huxley example}
+%   \vspace{-3mm}
+
+%   \begin{onlyenv}<1, 5>
+%   \begin{lstlisting}
+% def hodgin_huxley(gbar_Na, gbar_K, gbar_l):
+%     # Calculate the membrane potential using
+%     # gbar_Na, gbar_K and gbar_l
+%     ...
+%     return time, membrane_potential
+%       \end{lstlisting}
+% \end{onlyenv}
+
+
+% \begin{onlyenv}<2, 3, 4>
+%   \begin{lstlisting}[style=gray]
+% def hodgin_huxley(gbar_Na, gbar_K, gbar_l):
+%     # Calculate the membrane potential using
+%     # gbar_Na, gbar_K and gbar_l
+%     ...
+%     return time, membrane_potential
+% \end{lstlisting}
+% \end{onlyenv}
+
+
+
+% \begin{onlyenv}<1>
+%   \begin{lstlisting}[style=white]
+% parameters = {
+%   "gbar_Na": cp.Uniform(60, 180),
+%   "gbar_K": cp.Uniform(18, 54),
+%   "gbar_l": cp.Uniform(0.15, 0.45)}
+%   \end{lstlisting}
+% \end{onlyenv}
+
+%   \begin{onlyenv}<2, 5>
+%     \begin{lstlisting}
+% parameters = {
+%     "gbar_Na": cp.Uniform(60, 180),
+%     "gbar_K": cp.Uniform(18, 54),
+%     "gbar_l": cp.Uniform(0.15, 0.45)}
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+%   \begin{onlyenv}<3, 4>
+%     \begin{lstlisting}[style=gray]
+% parameters = {
+%     "gbar_Na": cp.Uniform(60, 180),
+%     "gbar_K": cp.Uniform(18, 54),
+%     "gbar_l": cp.Uniform(0.15, 0.45)}
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+
+
+%   \begin{onlyenv}<1, 2>
+%     \begin{lstlisting}[style=white]
+% UQ = un.UncertaintyQuantification(
+%     model=hodgkin_huxley,
+%     parameters=parameters)
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+
+%   \begin{onlyenv}<3, 5>
+%     \begin{lstlisting}
+% UQ = un.UncertaintyQuantification(
+%     model=hodgkin_huxley,
+%     parameters=parameters)
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+
+%   \begin{onlyenv}<4>
+%     \begin{lstlisting}[style=gray]
+% UQ = un.UncertaintyQuantification(
+%     model=hodgkin_huxley,
+%     parameters=parameters)
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+
+
+%   \begin{onlyenv}<1-3>
+%     \begin{lstlisting}[style=white]
+% results = UQ.quantify()
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+
+%   \begin{onlyenv}<4, 5>
+%     \begin{lstlisting}
+% results = UQ.quantify()
+%     \end{lstlisting}
+%   \end{onlyenv}
+
+% \end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+\begin{frame}{{\normalsize \color{black!65!white} Summary:} \\ Uncertainty quantification enables us to take the
+  effects of uncertain parameters into account}
+
+\pause
+  % First point
+  \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+    \node [align=left, xshift=-3.3cm, yshift=1cm] (image3) at (current page.center)
+          {\includegraphics[width = 0.45\textwidth]{uncertainpy.png}};
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+    \node[align=left, xshift=-0.3cm, yshift=1cm, anchor=west] at (current page.center) {\bf Performs all calculations without \\ \bf the need for detailed knowledge};
+  \end{tikzpicture}
+
+  \pause
+  % Second point
+  \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+    \node [align=left, xshift=-3.3cm, yshift=-1.9cm] (image1) at (current page.center)
+        {\includegraphics[width = 0.2\textwidth]{features.png}};
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+      \node[align=left, xshift=-0.3cm, yshift=-1.9cm, anchor=west] at (current page.center) {\bf Tailored towards neuroscience\\ \bf through the calculation of features};
+    \end{tikzpicture}
+
+
+
+
+    %  \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+    %      \node [align=left, xshift=0.49\textwidth,yshift=-0.37\textwidth] (image2) at (current page.center)
+    %            {\includegraphics[width = 0.3\textwidth]{cinpla.png}};
+    %    \end{tikzpicture}
+
+
+
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+\begin{frame}[fragile]
+  \vspace{-0.3cm}
+  \begin{figure}
+  \includegraphics[width=1\textwidth]{uncertainpy.png}
+  \end{figure}
+
+
+
+  {\LARGE \bf A Python toolbox for uncertainty quantification and sensitivity analysis}
+
+  \vspace{0.4cm}
+
+
+  Open source:
+
+  \begin{lstlisting}
+  github.com/simetenn/uncertainpy
+  \end{lstlisting}
+
+
+  Easy installation:
+
+  \begin{lstlisting}
+  pip install uncertainpy
+  \end{lstlisting}
+
+Extensive documentation:
+
+\begin{lstlisting}
+  uncertainpy.readthedocs.io
+\end{lstlisting}
+
+
+\vspace{0.4cm}
+
+
+\textbf{Article in Frontiers in Neuroinformatics}
+
+
+
+  % Want to know more, come talk with me at my poster
+  % \pause
+  % \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+
+  %   \node[align=left, yshift=0.07\textwidth] at (current page.south){ \bf \large Want to know more, come \\ \large \bf talk with me at my poster};
+  % \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture, overlay, font=\sffamily]
+    \node [align=left, xshift=0.49\textwidth,yshift=-0.37\textwidth] (image2) at (current page.center)
+          {\includegraphics[width = 0.3\textwidth]{cinpla.png}};
+  \end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Membrane potential of a thalamic interneuron}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{lgn.png}
+%   \end{figure}
+
+% \end{frame}
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+% \begin{frame}{Membrane potential of a thalamic interneuron}
+%   \vspace{-5mm}
+
+%   \begin{figure}
+%       \includegraphics[width=1\textwidth]{lgn_results.png}
+%   \end{figure}
+
+% \end{frame}
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+
+% \begin{frame}[fragile]{Results are saved and loaded with the \lstinline|Data| class}
+
+% \begin{lstlisting}
+% results = un.Data()
+% results.load("filename")
+
+% mean = results["nr_spikes"].mean
+% variance = results["nr_spikes"].variance
+% \end{lstlisting}
+% \end{frame}
+
+
+
+
+% %%%%%%%%%%%%%
+% %   Frame   %
+% %%%%%%%%%%%%%
+
+
+% \begin{frame}[fragile]{NEURON models can be used with the \\
+%                        \lstinline|NeuronModel| class}
+
+%   \begin{lstlisting}
+% model = un.NeuronModel(
+%     path="path/to/neuron_model",
+%     adaptive=True,
+%     stimulus_start=1000,
+%     stimulus_end=1900
+% )
+%   \end{lstlisting}
+% \end{frame}
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+
+\begin{frame}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+%   Frame   %
+%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Uncertainpy uses the efficient polynomial chaos expansions}
+  \begin{figure}
+     \includegraphics[width=0.9\textwidth]{mc_vs_pc.png}
+  \end{figure}
+
+  \end{frame}
+
+
+\end{document}
